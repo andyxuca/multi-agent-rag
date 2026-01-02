@@ -7,7 +7,7 @@ from sentence_transformers import SentenceTransformer
 EMBED_MODEL_NAME = "Qwen/Qwen3-Embedding-0.6B"
 _embed_model = SentenceTransformer(EMBED_MODEL_NAME)
 
-def chunk_text(text, size=400):
+def chunk_text(text, size=500):
     return [text[i:i+size] for i in range(0, len(text), size)]
 
 def embed(texts):
@@ -35,7 +35,6 @@ def main():
                 })
                 chunks.append(chunk)
 
-    # 🔹 use Qwen3 embeddings
     X = embed(chunks)
 
     index = faiss.IndexFlatIP(X.shape[1])
