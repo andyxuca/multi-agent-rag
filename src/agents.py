@@ -13,8 +13,9 @@ client = OpenAI(
 MODEL = os.environ["DEEPSEEK_MODEL"]
 
 def planner(question):
-    system = """Return JSON:
-    { "queries": [string], "k": int }
+    system = """Return JSON only:
+    { "queries": [string]}
+    where "queries" are search queries derived from the question.
     """
     r = client.chat.completions.create(
         model=MODEL,

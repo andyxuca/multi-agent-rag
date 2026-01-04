@@ -20,8 +20,6 @@ def main():
 
     for row in ds:
         text = row["text"].strip()
-        if len(text) < 500:
-            continue  
 
         doc = {
             "doc_id": f"wiki_{row['title']}",

@@ -7,10 +7,11 @@ def main():
     question = input("Question: ")
 
     plan = planner(question)
+    print("\nPlan:\n", plan)
     evidence = []
 
     for q in plan["queries"]:
-        evidence.extend(retrieve(q, k=plan["k"]))
+        evidence.extend(retrieve(q, k=3))
 
     answer = answerer(question, evidence)
     print("\nAnswer:\n", answer)
